@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFT Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav id="nav">
+    <a href="#" class="nl">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#a855f7" viewBox="0 0 16 16">
+        <path
+          d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5M4 15h3v-5H4zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm3 0h-2v3h2z" />
+      </svg>
+      NFT Marketplace
+    </a>
+
+    <ul class="nls">
+      <li><a href="marketplace.html">Marketplace</a></li>
+      <li><a href="#">Rankings</a></li>
+      <li><a href="connect.html">Connect a wallet</a></li>
+    </ul>
+
+    <a href="signup.html" class="signup-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+        <path
+          d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+      </svg>
+      Sign Up
+    </a>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="hero-title">Discover<br>Digital Art &<br>Collect NFTs</h1>
+      <p class="hero-desc">NFT Marketplace UI Created With Anima For Figma. Collect, Buy And Sell Art From More Than 20k
+        NFT Artists.</p>
+      <a href="signup.html" class="get-started-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rocket-takeoff"
+          viewBox="0 0 16 16">
+          <path
+            d="M9.752 6.193c.599.6 1.73.437 2.528-.362s.96-1.932.362-2.531c-.599-.6-1.73-.438-2.528.361-.798.8-.96 1.933-.362 2.532" />
+          <path
+            d="M15.811 3.312c-.363 1.534-1.334 3.626-3.64 6.218l-.24 2.408a2.56 2.56 0 0 1-.732 1.526L8.817 15.85a.51.51 0 0 1-.867-.434l.27-1.899c.04-.28-.013-.593-.131-.956a9 9 0 0 0-.249-.657l-.082-.202c-.815-.197-1.578-.662-2.191-1.277-.614-.615-1.079-1.379-1.275-2.195l-.203-.083a10 10 0 0 0-.655-.248c-.363-.119-.675-.172-.955-.132l-1.896.27A.51.51 0 0 1 .15 7.17l2.382-2.386c.41-.41.947-.67 1.524-.734h.006l2.4-.238C9.005 1.55 11.087.582 12.623.208c.89-.217 1.59-.232 2.08-.188.244.023.435.06.57.093q.1.026.16.045c.184.06.279.13.351.295l.029.073a3.5 3.5 0 0 1 .157.721c.055.485.051 1.178-.159 2.065m-4.828 7.475.04-.04-.107 1.081a1.54 1.54 0 0 1-.44.913l-1.298 1.3.054-.38c.072-.506-.034-.993-.172-1.418a9 9 0 0 0-.164-.45c.738-.065 1.462-.38 2.087-1.006M5.205 5c-.625.626-.94 1.351-1.004 2.09a9 9 0 0 0-.45-.164c-.424-.138-.91-.244-1.416-.172l-.38.054 1.3-1.3c.245-.246.566-.401.91-.44l1.08-.107zm9.406-3.961c-.38-.034-.967-.027-1.746.163-1.558.38-3.917 1.496-6.937 4.521-.62.62-.799 1.34-.687 2.051.107.676.483 1.362 1.048 1.928.564.565 1.25.941 1.924 1.049.71.112 1.429-.067 2.048-.688 3.079-3.083 4.192-5.444 4.556-6.987.183-.771.18-1.345.138-1.713a3 3 0 0 0-.045-.283 3 3 0 0 0-.3-.041Z" />
+          <path
+            d="M7.009 12.139a7.6 7.6 0 0 1-1.804-1.352A7.6 7.6 0 0 1 3.794 8.86c-1.102.992-1.965 5.054-1.839 5.18.125.126 3.936-.896 5.054-1.902Z" />
+        </svg>
+        Get Started
+      </a>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">240k+</span>
+          <span class="stat-label">Total Sale</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">100k+</span>
+          <span class="stat-label">Auctions</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">240k+</span>
+          <span class="stat-label">Artists</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="nft-card">
+        <div class="nft-card-img">
+          <img src="./1.png" alt="Space Walking NFT" />
+        </div>
+        <div class="nft-card-info">
+          <h3 class="nft-card-title">Space Walking</h3>
+          <div class="nft-card-author">
+            <img src="./avatar10.png" alt="Animakid avatar" class="author-avatar" />
+            <span>Animakid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trending">
+    <div class="trending-header">
+      <h2>Trending Collection</h2>
+      <p>Checkout Our Weekly Updated Trending Collection.</p>
+    </div>
+
+    <div class="trending-grid">
+
+      <div class="collection-card">
+        <div class="card-main-img">
+          <img src="./2.png" alt="">
+          <div class="img-dsgn" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-thumbs">
+            <div class="thumb">
+              <div class="img-dsgn2" style="width:100%;height:100%;">
+                <img src="./5.png" alt="">
+              </div>
+            </div>
+            <div class="thumb">
+              <div class="img-dsgn3" style="width:100%;height:100%;">
+                <img src="./6.png" alt="">
+              </div>
+            </div>
+            <div class="thumb-count">1025+</div>
+          </div>
+          <h3 class="card-title">DSGN Animals</h3>
+          <div class="card-author">
+            <div class="avatar-placeholder avatar-mrfox"><img class="avatar" src="./avatar6.png" alt=""></div>
+            <span>MrFox</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection-card">
+        <div class="card-main-img">
+          <img src="./3.png" alt="">
+          <div class="img-mush" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-thumbs">
+            <div class="thumb">
+              <div class="img-mush2" style="width:100%;height:100%;">
+                <img src="./3.png" alt="">
+              </div>
+            </div>
+            <div class="thumb">
+              <div class="img-mush3" style="width:100%;height:100%;">
+                <img src="./3.png" alt="">
+              </div>
+            </div>
+            <div class="thumb-count">1025+</div>
+          </div>
+          <h3 class="card-title">Magic Mushrooms</h3>
+          <div class="card-author">
+            <div class="avatar-placeholder avatar-shroomie"><img class="avatar" src="./avatar7.png" alt=""></div>
+            <span>Shroomie</span>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="collection-card">
+        <div class="card-main-img">
+          <img src="./4.png" alt="">
+          <div class="img-disco" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-thumbs">
+            <div class="thumb">
+              <div class="img-disco2" style="width:100%;height:100%;">
+                <img src="./4.png" alt="">
+              </div>
+            </div>
+            <div class="thumb">
+              <div class="img-disco3" style="width:100%;height:100%;">
+                <img src="./7.png" alt="">
+              </div>
+            </div>
+            <div class="thumb-count">1025+</div>
+          </div>
+          <h3 class="card-title">Disco Machines</h3>
+          <div class="card-author">
+            <div class="avatar-placeholder avatar-bk2r"><img class="avatar" src="./avatar10.png" alt=""></div>
+            <span>BeKind2Robots</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>Top Creators</h1>
+        <p>Checkout Top Rated Creators On The NFT Marketplace</p>
+      </div>
+      <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-rocket-takeoff" viewBox="0 0 16 16">
+          <path
+            d="M9.752 6.193c.599.6 1.73.437 2.528-.362s.96-1.932.362-2.531c-.599-.6-1.73-.438-2.528.361-.798.8-.96 1.933-.362 2.532" />
+          <path
+            d="M15.811 3.312c-.363 1.534-1.334 3.626-3.64 6.218l-.24 2.408a2.56 2.56 0 0 1-.732 1.526L8.817 15.85a.51.51 0 0 1-.867-.434l.27-1.899c.04-.28-.013-.593-.131-.956a9 9 0 0 0-.249-.657l-.082-.202c-.815-.197-1.578-.662-2.191-1.277-.614-.615-1.079-1.379-1.275-2.195l-.203-.083a10 10 0 0 0-.655-.248c-.363-.119-.675-.172-.955-.132l-1.896.27A.51.51 0 0 1 .15 7.17l2.382-2.386c.41-.41.947-.67 1.524-.734h.006l2.4-.238C9.005 1.55 11.087.582 12.623.208c.89-.217 1.59-.232 2.08-.188.244.023.435.06.57.093q.1.026.16.045c.184.06.279.13.351.295l.029.073a3.5 3.5 0 0 1 .157.721c.055.485.051 1.178-.159 2.065m-4.828 7.475.04-.04-.107 1.081a1.54 1.54 0 0 1-.44.913l-1.298 1.3.054-.38c.072-.506-.034-.993-.172-1.418a9 9 0 0 0-.164-.45c.738-.065 1.462-.38 2.087-1.006M5.205 5c-.625.626-.94 1.351-1.004 2.09a9 9 0 0 0-.45-.164c-.424-.138-.91-.244-1.416-.172l-.38.054 1.3-1.3c.245-.246.566-.401.91-.44l1.08-.107zm9.406-3.961c-.38-.034-.967-.027-1.746.163-1.558.38-3.917 1.496-6.937 4.521-.62.62-.799 1.34-.687 2.051.107.676.483 1.362 1.048 1.928.564.565 1.25.941 1.924 1.049.71.112 1.429-.067 2.048-.688 3.079-3.083 4.192-5.444 4.556-6.987.183-.771.18-1.345.138-1.713a3 3 0 0 0-.045-.283 3 3 0 0 0-.3-.041Z" />
+          <path
+            d="M7.009 12.139a7.6 7.6 0 0 1-1.804-1.352A7.6 7.6 0 0 1 3.794 8.86c-1.102.992-1.965 5.054-1.839 5.18.125.126 3.936-.896 5.054-1.902Z" />
+        </svg> View Rankings</button>
+    </div>
+
+    <div class="grid">
+
+      <!-- Card -->
+      <a href="profile.html">
+        <div class="card">
+          <span class="rank">1</span>
+          <img src="./avatar1.png" alt="Keepitreal avatar">
+          <h3>Keepitreal</h3>
+          <p>Total Sales: <span>34.53 ETH</span></p>
+        </div>
+      </a>
+      <a href="profile.html">
+        <div class="card">
+          <span class="rank">2</span>
+          <img src="./avatar2.png" alt="DigiLab avatar">
+          <h3>DigiLab</h3>
+          <p>Total Sales: <span>34.53 ETH</span></p>
+        </div>
+      </a>
+      <a href="profile.html">
+        <div class="card">
+          <span class="rank">3</span>
+          <img src="./avatar3.png" alt="GravityOne avatar">
+          <h3>GravityOne</h3>
+          <p>Total Sales: <span>34.53 ETH</span></p>
+        </div>
+      </a>
+      <a href="profile.html">
+        <div class="card">
+          <span class="rank">4</span>
+          <img src="./avatar4.png" alt="Juanie avatar">
+          <h3>Juanie</h3>
+          <p>Total Sales: <span>34.53 ETH</span></p>
+        </div>
+      </a>
+      <a href="profile.html">
+        <div class="card">
+          <span class="rank">5</span>
+          <img src="./avatar5.png" alt="BlueWhale avatar">
+          <h3>BlueWhale</h3>
+          <p>Total Sales: <span>34.53 ETH</span></p>
+        </div>
+      </a>
+      <a href="profile.html">
+        <div class="card">
+          <span class="rank">6</span>
+          <img src="./avatar6.png" alt="Mr Fox avatar">
+          <h3>Mr Fox</h3>
+          <p>Total Sales: <span>34.53 ETH</span></p>
+        </div>
+      </a>
+      <a href="profile.html">
+        <div class="card">
+          <span class="rank">7</span>
+          <img src="./avatar7.png" alt="Shroomie avatar">
+          <h3>Shroomie</h3>
+          <p>Total Sales: <span>34.53 ETH</span></p>
+        </div>
+      </a>
+      <a href="profile.html">
+        <div class="card">
+          <span class="rank">8</span>
+          <img src="./avatar8.png" alt="Robotica avatar">
+          <h3>Robotica</h3>
+          <p>Total Sales: <span>34.53 ETH</span></p>
+        </div>
+      </a>
+      <a href="profile.html">
+      <div class="card">
+        <span class="rank">9</span>
+        <img src="./avatar9.png" alt="RustyRobot avatar">
+        <h3>RustyRobot</h3>
+        <p>Total Sales: <span>34.53 ETH</span></p>
+      </div>
+</a>
+<a href="profile.html">
+      <div class="card">
+        <span class="rank">10</span>
+        <img src="./avatar10.png" alt="Animakid avatar">
+        <h3>Animakid</h3>
+        <p>Total Sales: <span>34.53 ETH</span></p>
+      </div>
+</a>
+<a href="profile.html">
+      <div class="card">
+        <span class="rank">11</span>
+        <img src="./avatar11.png" alt="Dotgu avatar">
+        <h3>Dotgu</h3>
+        <p>Total Sales: <span>34.53 ETH</span></p>
+      </div>
+</a>
+<a href="profile.html">
+      <div class="card">
+        <span class="rank">12</span>
+        <img src="./avatar12.png" alt="Ghiblier avatar">
+        <h3>Ghiblier</h3>
+        <p>Total Sales: <span>34.53 ETH</span></p>
+      </div>
+    </div>
+  </div>
+</a>
+  
+  <!-- BROWSE CATEGORIES SECTION -->
+  <div class="container">
+    <h1>Browse Categories</h1>
+    <div class="categories">
+      <div class="category">
+        <div class="icon">
+          <img src="./11.jpg" alt="Art" class="category-img">
+          <i class="fas fa-paint-brush"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-brush" viewBox="0 0 16 16">
+              <path
+                d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.1 6.1 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.1 8.1 0 0 1-3.078.132 4 4 0 0 1-.562-.135 1.4 1.4 0 0 1-.466-.247.7.7 0 0 1-.204-.288.62.62 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896q.19.012.348.048c.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04M4.705 11.912a1.2 1.2 0 0 0-.419-.1c-.246-.013-.573.05-.879.479-.197.275-.355.532-.5.777l-.105.177c-.106.181-.213.362-.32.528a3.4 3.4 0 0 1-.76.861c.69.112 1.736.111 2.657-.12.559-.139.843-.569.993-1.06a3 3 0 0 0 .126-.75zm1.44.026c.12-.04.277-.1.458-.183a5.1 5.1 0 0 0 1.535-1.1c1.9-1.996 4.412-5.57 6.052-8.631-2.59 1.927-5.566 4.66-7.302 6.792-.442.543-.795 1.243-1.042 1.826-.121.288-.214.54-.275.72v.001l.575.575zm-4.973 3.04.007-.005zm3.582-3.043.002.001h-.002z" />
+            </svg></i>
+        </div>
+        <p>Art</p>
+      </div>
+      <div class="category">
+        <div class="icon">
+          <img src="./02.png" alt="Collectibles" class="category-img">
+          <i class="fas fa-cogs"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-columns-gap" viewBox="0 0 16 16">
+              <path
+                d="M6 1v3H1V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm14 12v3h-5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM6 8v7H1V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zm14-6v7h-5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z" />
+            </svg></i>
+        </div>
+        <p>Collectibles</p>
+      </div>
+      <div class="category">
+        <div class="icon">
+          <img src="./03.png" alt="Music" class="category-img">
+          <i class="fas fa-music"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-music-note-beamed" viewBox="0 0 16 16">
+              <path
+                d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13s1.12-2 2.5-2 2.5.896 2.5 2m9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2" />
+              <path fill-rule="evenodd" d="M14 11V2h1v9zM6 3v10H5V3z" />
+              <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4z" />
+            </svg></i>
+        </div>
+        <p>Music</p>
+      </div>
+      <div class="category">
+        <div class="icon">
+          <img src="./04.png" alt="Photography" class="category-img">
+          <i class="fas fa-camera"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-camera" viewBox="0 0 16 16">
+              <path
+                d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z" />
+              <path
+                d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
+            </svg></i>
+        </div>
+        <p>Photography</p>
+      </div>
+      <div class="category">
+        <div class="icon">
+          <img src="./05.png" alt="Video" class="category-img">
+          <i class="fas fa-video"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-camera-video" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z" />
+            </svg></i>
+        </div>
+        <p>Video</p>
+      </div>
+      <div class="category">
+        <div class="icon">
+          <img src="./06.png" alt="Utility" class="category-img">
+          <i class="fas fa-toolbox"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-unity" viewBox="0 0 16 16">
+              <path
+                d="M15 11.2V3.733L8.61 0v2.867l2.503 1.466c.099.067.099.2 0 .234L8.148 6.3c-.099.067-.197.033-.263 0L4.92 4.567c-.099-.034-.099-.2 0-.234l2.504-1.466V0L1 3.733V11.2v-.033.033l2.438-1.433V6.833c0-.1.131-.166.197-.133L6.6 8.433c.099.067.132.134.132.234v3.466c0 .1-.132.167-.198.134L4.031 10.8l-2.438 1.433L7.983 16l6.391-3.733-2.438-1.434L9.434 12.3c-.099.067-.198 0-.198-.133V8.7c0-.1.066-.2.132-.233l2.965-1.734c.099-.066.197 0 .197.134V9.8z" />
+            </svg></i>
+        </div>
+        <p>Utility</p>
+      </div>
+      <div class="category">
+        <div class="icon">
+          <img src="./07.png" alt="Sport" class="category-img">
+          <i class="fas fa-basketball-ball"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-balloon" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8 9.984C10.403 9.506 12 7.48 12 5a4 4 0 0 0-8 0c0 2.48 1.597 4.506 4 4.984M13 5c0 2.837-1.789 5.227-4.52 5.901l.244.487a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.244-.487C4.789 10.227 3 7.837 3 5a5 5 0 0 1 10 0m-6.938-.495a2 2 0 0 1 1.443-1.443C7.773 2.994 8 2.776 8 2.5s-.226-.504-.498-.459a3 3 0 0 0-2.46 2.461c-.046.272.182.498.458.498s.494-.227.562-.495" />
+            </svg></i>
+        </div>
+        <p>Sport</p>
+      </div>
+      <div class="category">
+        <div class="icon">
+          <img src="./08.png" alt="Virtual Worlds" class="category-img">
+          <i class="fas fa-globe"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-globe" viewBox="0 0 16 16">
+              <path
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z" />
+            </svg></i>
+        </div>
+        <p>Virtual Worlds</p>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="discover">
+
+    <!-- Header -->
+    <div class="discover-header">
+      <div class="discover-header-text">
+        <h2>Discover More NFTs</h2>
+        <p>Explore New Trending NFTs</p>
+      </div>
+      <button class="see-all-btn">
+        <!-- eye icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+        See All
+      </button>
+    </div>
+
+    <!-- NFT Grid -->
+    <div class="nft-grid">
+
+      <!-- Card 1: Distant Galaxy -->
+      <div class="nft-card">
+        <div class="card-img-wrap">
+          <div class="card-img-placeholder img-galaxy"><img src="./d1.png"></div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-title">Distant Galaxy</h3>
+          <div class="card-author">
+            <div class="author-avatar"><img src="./avatar13.png" alt=""></div>
+            <span class="author-name">MoonDancer</span>
+          </div>
+          <div class="card-price-row">
+            <div class="price-block">
+              <span class="price-label">Price</span>
+              <span class="price-value">1.63 ETH</span>
+            </div>
+            <div class="price-block highest-bid">
+              <span class="price-label">Highest Bid</span>
+              <span class="price-value">0.33 wETH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Life On Edena -->
+      <div class="nft-card">
+        <div class="card-img-wrap">
+          <div class="card-img-placeholder img-edena"><img src="./05.png" alt=""></div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-title">Life On Edena</h3>
+          <div class="card-author">
+            <div class="author-avatar"><img src="./avatar14.png" alt=""></div>
+            <span class="author-name">NabulaKid</span>
+          </div>
+          <div class="card-price-row">
+            <div class="price-block">
+              <span class="price-label">Price</span>
+              <span class="price-value">1.63 ETH</span>
+            </div>
+            <div class="price-block highest-bid">
+              <span class="price-label">Highest Bid</span>
+              <span class="price-value">0.33 wETH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: AstroFiction -->
+      <div class="nft-card">
+        <div class="card-img-wrap">
+          <div class="card-img-placeholder img-astro"><img src="./d3.png" alt=""></div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-title">AstroFiction</h3>
+          <div class="card-author">
+            <div class="author-avatar"><img src="./avatar11.png" alt=""></div>
+            <span class="author-name">Spaceone</span>
+          </div>
+          <div class="card-price-row">
+            <div class="price-block">
+              <span class="price-label">Price</span>
+              <span class="price-value">1.63 ETH</span>
+            </div>
+            <div class="price-block highest-bid">
+              <span class="price-label">Highest Bid</span>
+              <span class="price-value">0.33 wETH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ═══ HERO BANNER ═══ -->
+  <div class="hero-banner">
+    <!-- Background with mushroom illustration -->
+    <div class="hero-bg">
+      <!-- Mushroom SVG illustration -->
+      <svg class="mushroom-svg" viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="capGrad" cx="50%" cy="40%" r="55%">
+            <stop offset="0%" stop-color="#ff9060" />
+            <stop offset="35%" stop-color="#d45030" />
+            <stop offset="70%" stop-color="#7a2060" />
+            <stop offset="100%" stop-color="#3a0858" />
+          </radialGradient>
+          <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#c060ff" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="#6600cc" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="stemGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#d8b0ff" />
+            <stop offset="100%" stop-color="#7030b0" />
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+
+
+        <!-- Cap ribs -->
+        <g stroke="rgba(255,200,150,0.2)" stroke-width="1.5" fill="none">
+          <path d="M100,145 Q120,80 180,60" />
+          <path d="M130,155 Q150,85 180,60" />
+          <path d="M160,160 Q168,88 180,60" />
+          <path d="M200,160 Q192,88 180,60" />
+          <path d="M230,155 Q210,85 180,60" />
+          <path d="M260,145 Q240,80 180,60" />
+        </g>
+
+        <!-- Cap edge bumps -->
+        <path
+          d="M25,110 Q40,155 70,150 Q100,165 130,155 Q155,168 180,160 Q205,168 230,155 Q260,165 290,150 Q320,155 335,110"
+          fill="rgba(80,20,120,0.6)" stroke="rgba(180,100,255,0.3)" stroke-width="1" />
+
+        <!-- Glowing dots on cap -->
+        <circle cx="120" cy="90" r="5" fill="#ff80c0" opacity="0.8" filter="url(#glow)" />
+        <circle cx="160" cy="72" r="4" fill="#c080ff" opacity="0.8" filter="url(#glow)" />
+        <circle cx="200" cy="75" r="6" fill="#ff9060" opacity="0.7" filter="url(#glow)" />
+        <circle cx="240" cy="95" r="4" fill="#ff80c0" opacity="0.8" filter="url(#glow)" />
+        <circle cx="145" cy="110" r="3" fill="#ffffa0" opacity="0.6" />
+        <circle cx="215" cy="108" r="3" fill="#ffffa0" opacity="0.6" />
+
+        <!-- Stem -->
+        <path d="M148,155 Q140,200 138,270 L222,270 Q220,200 212,155 Z" fill="url(#stemGrad)" opacity="0.85" />
+
+        <!-- Stem highlight -->
+        <path d="M158,158 Q152,200 151,268 Q158,255 162,200 Q163,175 165,158 Z" fill="rgba(255,255,255,0.2)" />
+
+        <!-- Bottom glow -->
+        <ellipse cx="180" cy="265" rx="55" ry="8" fill="rgba(140,60,220,0.4)" filter="url(#glow)" />
+      </svg>
+    </div>
+
+    <div class="hero-overlay"><img class="mush" src="./3.png" alt=""></div>
+
+    <div class="hero-content">
+      <div class="hero-left">
+        <!-- Author badge -->
+        <div class="author-badge">
+          <div class="badge-avatar"><img class="ll" src="./avatar7.png" alt=""></div>
+          <span>Shroomie</span>
+        </div>
+
+        <h1 class="hero-title1">Magic Mushrooms</h1>
+
+        <button class="see-nft-btn">
+          <!-- eye icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          See NFT
+        </button>
+      </div>
+
+      <!-- Countdown timer -->
+      <div class="countdown-box">
+        <p class="countdown-label">Auction ends in:</p>
+        <div class="countdown-digits">
+          <div class="digit-group">
+            <span class="digit-num" id="hours">59</span>
+            <span class="digit-text">Hours</span>
+          </div>
+          <span class="colon">:</span>
+          <div class="digit-group">
+            <span class="digit-num" id="minutes">59</span>
+            <span class="digit-text">Minutes</span>
+          </div>
+          <span class="colon">:</span>
+          <div class="digit-group">
+            <span class="digit-num" id="seconds">59</span>
+            <span class="digit-text">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="how-it-works">
+    <h2 class="hiw-title">How It Works</h2>
+    <p class="hiw-subtitle">Find Out How To Get Started</p>
+
+    <div class="steps-grid">
+
+      <!-- Step 1: Setup Your Wallet -->
+      <div class="step-card">
+        <div class="step-icon">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Wallet body -->
+            <rect x="8" y="18" width="36" height="24" rx="5" fill="#a855f7" opacity="0.9" />
+            <rect x="8" y="22" width="36" height="6" fill="#7c3aed" />
+            <!-- Wallet flap -->
+            <rect x="30" y="26" width="14" height="10" rx="4" fill="#c084fc" />
+            <circle cx="37" cy="31" r="2.5" fill="#7c3aed" />
+            <!-- Card sticking out -->
+            <rect x="12" y="12" width="22" height="14" rx="4" fill="#e879f9" opacity="0.85"
+              transform="rotate(-8 12 12)" />
+            <rect x="13" y="16" width="14" height="2" rx="1" fill="rgba(255,255,255,0.5)"
+              transform="rotate(-8 12 12)" />
+            <!-- Decorative dots -->
+            <circle cx="16" cy="38" r="1.5" fill="rgba(255,255,255,0.4)" />
+            <circle cx="20" cy="38" r="1.5" fill="rgba(255,255,255,0.4)" />
+          </svg>
+        </div>
+        <h3 class="step-name">Setup Your Wallet</h3>
+        <p class="step-desc">Set up your wallet of choice. Connect it to the Animarket by clicking the wallet icon in
+          the top right corner.</p>
+      </div>
+
+      <!-- Step 2: Create Collection -->
+      <div class="step-card">
+        <div class="step-icon">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Folder back -->
+            <path d="M8 22 Q8 16 14 16 L24 16 L27 20 L44 20 Q48 20 48 24 L48 40 Q48 44 44 44 L12 44 Q8 44 8 40 Z"
+              fill="#7c3aed" opacity="0.7" />
+            <!-- Folder front -->
+            <path d="M8 26 Q8 22 12 22 L44 22 Q48 22 48 26 L48 40 Q48 44 44 44 L12 44 Q8 44 8 40 Z" fill="#a855f7" />
+            <!-- Star/image icon on folder -->
+            <rect x="20" y="28" width="16" height="12" rx="3" fill="#e879f9" opacity="0.9" />
+            <path d="M26 36 L28 32 L30 36 L34 34 L31 37 L33 41 L28 38 L23 41 L25 37 L22 34 Z" fill="white" opacity="0.7"
+              transform="scale(0.5) translate(28,24)" />
+            <!-- notification dot -->
+            <circle cx="42" cy="20" r="6" fill="#f97316" />
+            <path d="M39 20 L42 23 L46 17" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 class="step-name">Create Collection</h3>
+        <p class="step-desc">Upload your work and setup your collection. Add a description, social links and floor
+          price.</p>
+      </div>
+
+      <!-- Step 3: Start Earning -->
+      <div class="step-card">
+        <div class="step-icon">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Shopping cart body -->
+            <path d="M10 14 L16 14 L22 36 L44 36 L48 20 L18 20" stroke="#a855f7" stroke-width="3" stroke-linecap="round"
+              stroke-linejoin="round" fill="none" />
+            <!-- Cart body fill -->
+            <path d="M18 20 L46 20 L42 34 L22 34 Z" fill="#7c3aed" opacity="0.8" />
+            <!-- Wheels -->
+            <circle cx="26" cy="40" r="3.5" fill="#c084fc" />
+            <circle cx="40" cy="40" r="3.5" fill="#c084fc" />
+            <!-- Dollar/ETH symbol -->
+            <text x="30" y="31" font-family="monospace" font-size="10" font-weight="bold" fill="white"
+              text-anchor="middle">Ξ</text>
+            <!-- Sparkle -->
+            <path d="M46 12 L47.5 15 L51 16.5 L47.5 18 L46 21 L44.5 18 L41 16.5 L44.5 15 Z" fill="#f59e0b"
+              opacity="0.9" />
+          </svg>
+        </div>
+        <h3 class="step-name">Start Earning</h3>
+        <p class="step-desc">Choose between auctions and fixed-price listings. Start earning by selling your NFTs or
+          trading others.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ NEWSLETTER BANNER ═══ -->
+  <section class="newsletter-banner">
+    <div class="newsletter-inner">
+      <div class="newsletter-img-wrap">
+        <img src="./cosmosman.png" alt="Astronaut reading newspaper" class="newsletter-astronaut" />
+      </div>
+      <div class="newsletter-content">
+        <h2 class="newsletter-title">Join Our Weekly<br>Digest</h2>
+        <p class="newsletter-desc">Get Exclusive Promotions &amp; Updates Straight To Your Inbox.</p>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Enter your email here" />
+          <button class="newsletter-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+            </svg>
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <!-- Brand column -->
+      <div class="footer-col footer-brand">
+        <a href="#" class="footer-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#a855f7" viewBox="0 0 16 16">
+            <path
+              d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5M4 15h3v-5H4zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm3 0h-2v3h2z" />
+          </svg>
+          NFT Marketplace
+        </a>
+        <p class="footer-tagline">NFT marketplace UI created<br>with Anima for Figma.</p>
+        <p class="footer-community">Join our community</p>
+        <div class="footer-socials">
+          <!-- Discord -->
+          <a href="#" class="social-icon" aria-label="Discord">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612" />
+            </svg>
+          </a>
+          <!-- YouTube -->
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
+            </svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15" />
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Explore column -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Explore</h4>
+        <ul class="footer-links">
+          <li><a href="#">Marketplace</a></li>
+          <li><a href="#">Rankings</a></li>
+          <li><a href="#">Connect a wallet</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter column -->
+      <div class="footer-col footer-newsletter">
+        <h4 class="footer-col-title">Join Our Weekly Digest</h4>
+        <p class="footer-newsletter-desc">Get exclusive promotions &amp; updates straight to your inbox.</p>
+        <div class="footer-form">
+          <input type="email" class="footer-input" placeholder="Enter your email here" />
+          <button class="footer-subscribe-btn">Subscribe</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright bar -->
+    <div class="footer-bottom">
+      <p>© NFT Market. Use this template freely.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
