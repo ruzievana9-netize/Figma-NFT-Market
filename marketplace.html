@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Marketplace</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1f1f1f;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* HEADER / NAVBAR - rasmda ko'rsatilganidek */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: #d1d1e0;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: #c084fc;
+        }
+
+        .connect-btn {
+            background: linear-gradient(135deg, #6d28d9, #a855f7);
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .connect-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* HERO SECTION - Browse Marketplace */
+        .hero {
+            text-align: center;
+            padding: 55px 0 35px 0;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #d8b4fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 14px;
+        }
+
+        .hero p {
+            color: #9ca3af;
+            font-size: 17px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* TABS - NFTs / Collections (rasmdagiga to'liq mos) */
+        .tabs {
+            display: flex;
+            gap: 28px;
+            margin: 35px 0 30px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 14px;
+        }
+
+        .tab {
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #9ca3af;
+            transition: 0.2s;
+            padding-bottom: 4px;
+        }
+
+        .tab.active {
+            color: #c084fc;
+            position: relative;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #c084fc;
+        }
+
+        /* NFT GRID - 2 qator va har bir kartochka rasmda ko'rsatilganidek */
+        .nft-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 35px 0 50px 0;
+        }
+
+        /* NFT CARD */
+        .nft-card {
+            background: #111128;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nft-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        /* Rasm joyi - siz rasm qo'yasiz */
+        .card-img {
+            width: 100%;
+            height: 240px;
+            background: #1a1a35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Placeholder (rasm bo'lmasa chiqadi, siz rasmlaringizni qo'shgach yo'qoladi) */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #1f1f42, #13132c);
+            color: #a855f7;
+            font-size: 42px;
+            font-weight: 600;
+        }
+
+        /* Kartochka ichidagi matnlar */
+        .card-content {
+            padding: 18px 16px 20px 16px;
+        }
+
+        .nft-name {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            letter-spacing: -0.2px;
+        }
+
+        .trademark-text {
+            font-size: 12px;
+            color: #a855f7;
+            font-weight: 500;
+            margin-bottom: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .price-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 10px;
+            color: #8b8ba7;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
+        }
+
+        .price-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* NEWSLETTER - rasmdagiga mos */
+        .newsletter {
+            background: rgba(17, 17, 40, 0.7);
+            border-radius: 24px;
+            padding: 45px 35px;
+            margin: 55px 0 45px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .newsletter h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .newsletter p {
+            color: #b9b9d2;
+            margin-bottom: 28px;
+            font-size: 15px;
+        }
+
+        .signup-box {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .signup-box input {
+            padding: 12px 24px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: #0e0e24;
+            color: white;
+            width: 280px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .signup-box input:focus {
+            border-color: #a855f7;
+        }
+
+        .signup-box button {
+            background: linear-gradient(135deg, #6d28d9, #a855f7);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .signup-box button:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 25px 0 40px;
+            font-size: 13px;
+            color: #6b6b8f;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 20px;
+        }
+
+        /* Responsive - 3 ta moslashuv */
+        @media (max-width: 1100px) {
+            .nft-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 800px) {
+            .nft-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
+        }
+        @media (max-width: 500px) {
+            .nft-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar - rasmdagi kabi: NFT Marketplace | Explore | My Collections | Boring | Connect a wallet -->
+        <div class="header">
+            <div class="logo">NFT Marketplace</div>
+            <div class="nav-menu">
+                <a href="#">Explore</a>
+                <a href="#">My Collections</a>
+                <a href="#">Boring</a>
+                <button class="connect-btn">Connect a wallet</button>
+            </div>
+        </div>
+
+        <!-- Hero - Browse Marketplace -->
+        <div class="hero">
+            <h1>Browse Marketplace</h1>
+            <p>Browse through more than 50k NFTs on the NFT Marketplace.</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active">NFTs</div>
+            <div class="tab">Collections</div>
+        </div>
+
+        <!-- NFT Grid - barcha 12 ta NFT kartochkasi -->
+        <div class="nft-grid" id="nftGrid"></div>
+
+        <!-- Newsletter -->
+        <div class="newsletter">
+            <h3>Join Our Weekly Digest</h3>
+            <p>Get weekly promotions & updates straight to your inbox.</p>
+            <div class="signup-box">
+                <input type="email" placeholder="Your email address">
+                <button>Sign up now!</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            NFT Marketplace — All rights reserved
+        </div>
+    </div>
+
+    <script>
+        // Rasmdagi barcha NFT ma'lumotlari to'liq bir xil
+        const nftList = [
+            { name: "Magic Mushroom 0325", trademark: "Trademark", price1: "1.82 ETH", price2: "9.20 ETH" },
+            { name: "Happy Robot 022", trademark: "Trademark", price1: "1.83 ETH", price2: "6.22 ETH" },
+            { name: "Happy Robot 024", trademark: "Trademark", price1: "1.80 ETH", price2: "0.25 ETH" },
+            { name: "Designer Bear", trademark: "Trademark", price1: "3.85 ETH", price2: "0.29 ETH" },
+            { name: "Celebrity Dog 0254", trademark: "Trademark", price1: "1.87 ETH", price2: "6.22 ETH" },
+            { name: "Dancing Robot 0312", trademark: "Trademark", price1: "1.80 ETH", price2: "0.25 ETH" },
+            { name: "Cherry Khoosan Giri 0236", trademark: "Trademark", price1: "3.82 ETH", price2: "0.29 ETH" },
+            { name: "Space Travel", trademark: "Trademark", price1: "1.92 ETH", price2: "6.22 ETH" },
+            { name: "Sunset Dinerabon", trademark: "Trademark", price1: "1.80 ETH", price2: "0.25 ETH" },
+            { name: "Desert Mask", trademark: "Trademark", price1: "3.85 ETH", price2: "0.29 ETH" },
+            { name: "IceCream Age 0334", trademark: "Trademark", price1: "1.87 ETH", price2: "6.22 ETH" },
+            { name: "Colorful Dog 0344", trademark: "Trademark", price1: "1.80 ETH", price2: "0.25 ETH" }
+        ];
+
+        // =====================================================
+        // 🎨 RASMLARNI O'ZINGIZ QO'YISH UCHUN JOY:
+        // Har bir NFT uchun rasm URL ni shu yerga yozing!
+        // Misol uchun:
+        // imageUrls[0] = "rasmlar/magic_mushroom.png";
+        // imageUrls[1] = "rasmlar/happy_robot_022.jpg";
+        // Agar rasm qo'ymasangiz, avtomatik placeholder ko'rinadi.
+        // =====================================================
+        
+        // 1. Rasmlaringizni 'images' papkasiga joylang
+// 2. Quyidagi kodni ishlating:
+
+const imageUrls = [
+            "m1.png",   // Magic Mushroom 0325
+            "m2.png",       // Happy Robot 022
+            "m3.png",       // Happy Robot 024
+            "m4.png",         // Designer Bear
+            "m5.png",    // Celebrity Dog 0254
+            "m6.png",    // Dancing Robot 0312
+            "m7.png",        // Cherry Khoosan Giri 0236
+            "m8.png",          // Space Travel
+            "m9.png",      // Sunset Dinerabon
+            "m10.png",           // Desert Mask
+            "02.png",          // IceCream Age 0334
+            "m12.png"           // Colorful Dog 0344
+        ];
+        
+        // Agar siz tezda test qilmoqchi bo'lsangiz, quyidagi qatorni ishlatib placeholder rangli harflarni ko'rishingiz mumkin
+        // Lekin siz o'z rasmlaringizni qo'yganingizda buni o'chirib yoki ustiga yozib ketsangiz bo'ladi.
+        // Hozircha namuna sifatida chiroyli rangli placeholder berilgan, siz o'z rasmlaringizni qo'shgach ular ko'rinadi.
+        
+        // ================ GRIDNI YARATISH =================
+        const grid = document.getElementById('nftGrid');
+        
+        function renderCards() {
+            grid.innerHTML = '';
+            
+            nftList.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'nft-card';
+                
+                // Rasm qismi
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'card-img';
+                
+                const userImage = imageUrls[idx];
+                
+                if (userImage && userImage.trim() !== "") {
+                    // Agar foydalanuvchi rasm URL ini qo'ygan bo'lsa
+                    const img = document.createElement('img');
+                    img.src = userImage;
+                    img.alt = item.name;
+                    img.onerror = function() {
+                        // Agar rasm yuklanmasa placeholder chiqarish
+                        this.style.display = 'none';
+                        const placeholder = document.createElement('div');
+                        placeholder.className = 'img-placeholder';
+                        placeholder.innerText = item.name.substring(0, 2);
+                        imgDiv.appendChild(placeholder);
+                    };
+                    imgDiv.appendChild(img);
+                } else {
+                    // Placeholder (rasm bo'lmagan taqdirda)
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'img-placeholder';
+                    // Birinchi harflarni chiroyli qilish
+                    let short = item.name.substring(0, 2).toUpperCase();
+                    if (item.name.includes("Robot")) short = "🤖";
+                    else if (item.name.includes("Mushroom")) short = "🍄";
+                    else if (item.name.includes("Bear")) short = "🐻";
+                    else if (item.name.includes("Dog")) short = "🐕";
+                    else if (item.name.includes("Space")) short = "🚀";
+                    else if (item.name.includes("Desert")) short = "🏜️";
+                    else if (item.name.includes("IceCream")) short = "🍦";
+                    else short = "🎨";
+                    placeholder.innerText = short;
+                    imgDiv.appendChild(placeholder);
+                }
+                
+                // Matn qismi
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'card-content';
+                
+                const nameSpan = document.createElement('div');
+                nameSpan.className = 'nft-name';
+                nameSpan.innerText = item.name;
+                
+                const trademarkSpan = document.createElement('div');
+                trademarkSpan.className = 'trademark-text';
+                trademarkSpan.innerText = item.trademark;
+                
+                const priceRow = document.createElement('div');
+                priceRow.className = 'price-row';
+                
+                const leftPrice = document.createElement('div');
+                leftPrice.className = 'price-block';
+                leftPrice.innerHTML = `<span class="price-label">Current bid</span>
+                                      <span class="price-value">${item.price1}</span>`;
+                
+                const rightPrice = document.createElement('div');
+                rightPrice.className = 'price-block';
+                rightPrice.innerHTML = `<span class="price-label">Ending in</span>
+                                       <span class="price-value">${item.price2}</span>`;
+                
+                priceRow.appendChild(leftPrice);
+                priceRow.appendChild(rightPrice);
+                
+                contentDiv.appendChild(nameSpan);
+                contentDiv.appendChild(trademarkSpan);
+                contentDiv.appendChild(priceRow);
+                
+                card.appendChild(imgDiv);
+                card.appendChild(contentDiv);
+                grid.appendChild(card);
+            });
+        }
+        
+        renderCards();
+        
+        // Tab o'zgartirish (interaktivlik uchun, lekin mazmuni bir xil)
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                // Agar "Collections" bosilsa, xuddi shu kartochkalarni qoldirish mumkin
+                // Siz istasangiz bu yerda alohida ma'lumot yuklaysiz
+                if (this.innerText === 'Collections') {
+                    // hozircha bir xil, ammo siz o'zgartirishingiz mumkin
+                }
+            });
+        });
+        
+        // Connect wallet tugmasi
+        const walletBtn = document.querySelector('.connect-btn');
+        if(walletBtn) {
+            walletBtn.addEventListener('click', () => {
+                alert("Connect wallet (demo) — siz o'z logikangizni qo'shishingiz mumkin");
+            });
+        }
+        
+        // Newsletter tugmasi
+        const newsBtn = document.querySelector('.signup-box button');
+        const emailInput = document.querySelector('.signup-box input');
+        if(newsBtn) {
+            newsBtn.addEventListener('click', () => {
+                const email = emailInput.value.trim();
+                if(email && email.includes('@') && email.includes('.')) {
+                    alert(`✅ Thank you! ${email} has been subscribed.`);
+                    emailInput.value = '';
+                } else {
+                    alert("Please enter a valid email address.");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
