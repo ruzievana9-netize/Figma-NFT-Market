@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Marketplace - Animakid Profile (Perfect Match)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS USLUBLARI - RASM BILAN BİRGA BİR BO'LISHI UCHUN */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        body {
+            background-color: #2B2B2B; /* To'q fon */
+            color: #FFFFFF; /* Oq matn */
+        }
+
+        /* Navigatsiya - Rasmga mos */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #2B2B2B;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo i {
+            color: #A259FF; /* Binafsharang ikonka */
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .signup-btn {
+            background-color: #A259FF; /* Binafsharang tugma */
+            color: #FFFFFF;
+            padding: 12px 30px;
+            border-radius: 20px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Banner - Rasmga mos gradient bilan */
+        .banner {
+            height: 320px;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(162, 89, 255, 0) 0%, #2B2B2B 100%);
+            background-size: cover;
+            background-position: center;
+        }
+        .profile1{
+            width: 100%;
+            height: 400px;
+        }
+
+        /* Profil Ma'lumotlari - Joylashuv aniq rasmga mos */
+        .profile-section {
+            padding: 0 10%;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .avatar-container {
+            position: relative;
+            margin-top: -80px; /* Avatarni tepaga chiqarish */
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: start;
+        }
+
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 20px;
+            border: 2px solid #2B2B2B; /* Fon rangi bilan bir xil chegara */
+            object-fit: cover;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-header h1 {
+            font-size: 51px;
+            font-weight: 700;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .wallet-id {
+            background: #A259FF;
+            border: none;
+            color: #FFFFFF;
+            padding: 12px 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .follow-btn {
+            background: transparent;
+            border: 2px solid #A259FF;
+            color: #FFFFFF;
+            padding: 12px 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Statistika - Masofalar rasmga mos */
+        .stats {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item h3 { font-size: 28px; font-weight: 700; }
+        .stat-item p { color: #858584; font-size: 16px; } /* Kulrang matn */
+
+        .bio h3, .links h3 {
+            color: #858584; /* Kulrang sarlavha */
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .bio p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 24px;
+            margin-top: 15px;
+            color: #858584; /* Kulrang ikonkalari */
+        }
+        
+        .social-icons i {
+            cursor: pointer;
+        }
+
+        /* Tablar - Chiziq va rang rasmga mos */
+        .tabs {
+            display: flex;
+            border-top: 1px solid #3B3B3B;
+            margin-top: 40px;
+            justify-content: start;
+            padding-left: 10%;
+            margin-left: 400px;
+        }
+
+        .tab {
+            padding: 20px 60px;
+            color: #858584;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #FFFFFF;
+            border-bottom: 2px solid #858584;
+        }
+
+        /* Grid (Kartochkalar) - Rasmga mos ranglar va joylashuv */
+        .nft-grid {
+            background-color: #2B2B2B; /* To'q kulrang fon */
+            padding: 60px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(315px, 1fr)); /* Kartochka kengligi rasmga mos */
+            gap: 30px;
+            margin-left: 170px;
+        }
+
+        .nft-card {
+            background-color: #2B2B2B; /* Kartochka foni rasmga mos */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Rasmda ko'ringan yengil soya */
+            transition: transform 0.3s ease;
+        }
+        
+        .nft-card:hover {
+            transform: translateY(-5px); /* Hover effekti */
+        }
+
+        .nft-card img {
+            width: 100%;
+            height: 295px; /* Rasm balandligi rasmga mos */
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px 20px 25px 20px;
+        }
+
+        .card-body h4 { margin-bottom: 12px; font-size: 22px; font-weight: 600; }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        .author img { width: 24px; height: 24px; border-radius: 50%; }
+
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-details span { color: #858584; font-size: 12px; } /* Kulrang kichik matn */
+        .card-details p { font-size: 16px; margin-top: 8px; font-weight: 400; }
+
+        .footer {
+    background-color: #3b3b3b;
+    padding: 60px 50px 20px;
+    margin-top: 50px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    margin-bottom: 25px;
+}
+
+.footer-col p, .footer-col li {
+    color: #ccc;
+    margin-bottom: 15px;
+    list-style: none;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+    color: #858584;
+}
+
+.subscribe {
+    display: flex;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.subscribe input {
+    border: none;
+    padding: 15px 20px;
+    flex: 1;
+    outline: none;
+}
+
+.subscribe button {
+    background-color: #a259ff;
+    color: white;
+    border: none;
+    padding: 0 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #858584;
+    margin-bottom: 20px;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #858584;
+}
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo"><i class="fas fa-store"></i> NFT Marketplace</a>
+        <ul class="nav-links">
+            <li><a href="#">Marketplace</a></li>
+            <li><a href="#">Rankings</a></li>
+            <li><a href="#">Connect a wallet</a></li>
+            <li><button class="signup-btn"><i class="fas fa-user"></i> Sign Up</button></li>
+        </ul>
+    </nav>
+
+    <div class="banner"><img class="profile1" src="./profile1.png" alt=""></div>
+
+    <section class="profile-section">
+        <div class="avatar-container">
+            <img src="./avatar10.png" alt="Avatar" class="avatar">
+        </div>
+        
+        <div class="profile-header">
+            <h1>Animakid</h1>
+            <div class="btn-group">
+                <button class="wallet-id"><i class="fas fa-copy"></i> 0x61...878C</button>
+                <button class="follow-btn"><i class="fas fa-plus"></i> Follow</button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item"><h3>250k+</h3><p>Volume</p></div>
+            <div class="stat-item"><h3>50+</h3><p>NFTs Sold</p></div>
+            <div class="stat-item"><h3>3000+</h3><p>Followers</p></div>
+        </div>
+
+        <div class="bio">
+            <h3>Bio</h3>
+            <p>The Internet's Friendliest Designer Kid.</p>
+        </div>
+
+        <div class="links">
+            <h3>Links</h3>
+            <div class="social-icons">
+                <i class="fas fa-globe"></i>
+                <i class="fab fa-discord"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+        </div>
+    </section>
+
+    <div class="tabs">
+        <div class="tab active">Created 302</div>
+        <div class="tab">Owned 67</div>
+        <div class="tab">Collection 4</div>
+    </div>
+
+    <section class="nft-grid">
+        <div class="nft-card">
+            <img src="./d1.png" alt="NFT">
+            <div class="card-body">
+                <h4>Distant Galaxy</h4>
+                <div class="author"><img src="./avatar10.png"> Animakid</div>
+                <div class="card-details">
+                    <div><span>Price</span><p>1.63 ETH</p></div>
+                    <div style="text-align: right;"><span>Highest Bid</span><p>0.33 wETH</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="nft-card">
+            <img src="./05.png" alt="NFT">
+            <div class="card-body">
+                <h4>Life On Edena</h4>
+                <div class="author"><img src="./avatar10.png"> Animakid</div>
+                <div class="card-details">
+                    <div><span>Price</span><p>1.63 ETH</p></div>
+                    <div style="text-align: right;"><span>Highest Bid</span><p>0.33 wETH</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="nft-card">
+            <img src="d3.png" alt="NFT">
+            <div class="card-body">
+                <h4>AstroFiction</h4>
+                <div class="author"><img src="./avatar10.png"> Animakid</div>
+                <div class="card-details">
+                    <div><span>Price</span><p>1.63 ETH</p></div>
+                    <div style="text-align: right;"><span>Highest Bid</span><p>0.33 wETH</p></div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="nft-card">
+            <img src="d4.png" alt="NFT">
+            <div class="card-body">
+                <h4>AstroFiction</h4>
+                <div class="author"><img src="./avatar10.png"> Animakid</div>
+                <div class="card-details">
+                    <div><span>Price</span><p>1.63 ETH</p></div>
+                    <div style="text-align: right;"><span>Highest Bid</span><p>0.33 wETH</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="nft-card">
+            <img src="m5.png" alt="NFT">
+            <div class="card-body">
+                <h4>AstroFiction</h4>
+                <div class="author"><img src="./avatar10.png"> Animakid</div>
+                <div class="card-details">
+                    <div><span>Price</span><p>1.63 ETH</p></div>
+                    <div style="text-align: right;"><span>Highest Bid</span><p>0.33 wETH</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="nft-card">
+            <img src="d5.png" alt="NFT">
+            <div class="card-body">
+                <h4>AstroFiction</h4>
+                <div class="author"><img src="./avatar10.png"> Animakid</div>
+                <div class="card-details">
+                    <div><span>Price</span><p>1.63 ETH</p></div>
+                    <div style="text-align: right;"><span>Highest Bid</span><p>0.33 wETH</p></div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="nft-card">
+            <img src="m7.png" alt="NFT">
+            <div class="card-body">
+                <h4>AstroFiction</h4>
+                <div class="author"><img src="./avatar10.png"> Animakid</div>
+                <div class="card-details">
+                    <div><span>Price</span><p>1.63 ETH</p></div>
+                    <div style="text-align: right;"><span>Highest Bid</span><p>0.33 wETH</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="nft-card">
+            <img src="m6.png" alt="NFT">
+            <div class="card-body">
+                <h4>AstroFiction</h4>
+                <div class="author"><img src="./avatar10.png"> Animakid</div>
+                <div class="card-details">
+                    <div><span>Price</span><p>1.63 ETH</p></div>
+                    <div style="text-align: right;"><span>Highest Bid</span><p>0.33 wETH</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="nft-card">
+            <img src="d6.png" alt="NFT">
+            <div class="card-body">
+                <h4>AstroFiction</h4>
+                <div class="author"><img src="./avatar10.png"> Animakid</div>
+                <div class="card-details">
+                    <div><span>Price</span><p>1.63 ETH</p></div>
+                    <div style="text-align: right;"><span>Highest Bid</span><p>0.33 wETH</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3><i class="fas fa-store"></i> NFT Marketplace</h3>
+                <p>NFT marketplace UI created with Anima for Figma.</p>
+                <p>Join our community</p>
+                <div class="social-icons">
+                    <i class="fab fa-discord"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Explore</h3>
+                <ul>
+                    <li>Marketplace</li>
+                    <li>Rankings</li>
+                    <li>Connect a wallet</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Join Our Weekly Digest</h3>
+                <p>Get exclusive promotions & updates straight to your inbox.</p>
+                <div class="subscribe">
+                    <input type="email" placeholder="Enter your email here">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">© NFT Market. Use this template freely.</p>
+    </footer>
+
+</body>
+</html>
